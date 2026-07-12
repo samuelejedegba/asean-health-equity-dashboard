@@ -15,27 +15,48 @@ Three linked findings on ASEAN health outcomes (1990–2016), built from 20 offi
 
 ## The Process
 
-This wasn't a straightforward "load data, make charts" build. Getting to three trustworthy 
-findings meant catching and fixing real errors along the way — the kind that would have 
-undercut the whole analysis if they'd shipped unnoticed.
+This wasn't a straightforward "load data, make charts" build. It involved real data 
+modelling, statistical analysis outside Power BI, and catching real errors along the way — 
+the kind that would have undercut the whole analysis if they'd shipped unnoticed.
 
-**Data**
-- 20 official WHO/World Bank indicator files, spanning 1990–2016, standardised into a 
-  single 252-row country-year panel
+**Data engineering**
+- 20 official WHO/World Bank indicator files, spanning 1990–2016, cleaned and standardised 
+  in Python into a single 252-row country-year panel
 - Country name inconsistencies reconciled across sources (e.g. three different spellings 
   of Laos)
-- 28 individual data-quality anomalies identified through systematic checks — not eyeballed, 
-  detected — and disclosed rather than quietly cleaned away
+- Modelled as a proper star schema in Power BI: one fact table (`fact_HealthIndicators`) 
+  joined to `dim_Country` and `dim_Year`, plus standalone reference tables 
+  (`ref_Benchmarks` for WHO/SDG thresholds, `ref_SpendEfficiency` for regression output) 
+  deliberately left unjoined to avoid ambiguous relationship paths
+- A systematic anomaly-detection script — not manual eyeballing — flagged 28 individual 
+  data-quality issues (implausible year-on-year swings, early reporting cessation, 
+  suspected placeholder values) and logged them as their own queryable table
+
+**Analysis beyond drag-and-drop**
+- A log-linear regression, run in Python, fitted life expectancy against log-transformed 
+  spend per capita across all ten countries, then used to calculate each country's 
+  residual — how far its actual outcome sits above or below what its spend level predicts
+- A Pearson correlation coefficient, built from scratch in DAX (no built-in CORREL function 
+  in Power BI), to quantify the DPT-coverage-to-infant-mortality relationship precisely 
+  rather than asserting it
+- A recurring `LASTNONBLANK`-based DAX pattern used across multiple measures to pull each 
+  country's most recent reported year rather than an all-time average — the fix for a real 
+  bug found mid-build (below)
 
 **Corrections made mid-build**
 - Found and fixed a measure that used a 27-year historical average instead of each 
   country's current status — the original version wrongly flagged Malaysia as below the 
-  WHO workforce threshold
-- Replaced an early "efficiency" ranking after realising it rewarded low spend rather than 
-  genuine performance — rebuilt it as a proper log-linear regression with residual analysis
+  WHO workforce threshold, and wrongly counted 7 countries below target instead of 6
+- Replaced an early "efficiency" ranking (life expectancy ÷ spend) after realising it 
+  rewarded low spend rather than genuine performance — rebuilt it as the regression 
+  residual measure described above
 - Verified a stated correlation (initially cited as -0.85) against the actual chart it was 
-  meant to support, found it was -0.76, and corrected every reference across the dashboard, 
-  report, and slides
+  meant to support, found the true figure for that pairing was -0.76, and corrected every 
+  reference across the dashboard, report, and slides — keeping -0.85 only where it 
+  genuinely applied (DPT vs under-5 mortality, a different pairing)
+- Cross-checked country-level expenditure figures directly against the live dashboard 
+  rather than trusting an early estimate — caught a figure that was off by more than 50x 
+  for Singapore
 
 **Why this matters**
 Every number on this dashboard has been checked against the underlying data at least once, 
@@ -54,6 +75,7 @@ are the ones that survived that scrutiny.
 3. **Disease Containment & Data Integrity** — 8 of 10 countries have a documented TB 
    reporting anomaly, and only 2 still report data past 2012. Containment success cannot 
    currently be verified region-wide — which is itself the finding.
+
 
 
 
