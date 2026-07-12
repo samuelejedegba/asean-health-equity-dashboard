@@ -76,7 +76,29 @@ are the ones that survived that scrutiny.
    reporting anomaly, and only 2 still report data past 2012. Containment success cannot 
    currently be verified region-wide — which is itself the finding.
 
+## Policy Recommendations
 
+**1. Target funding at the six countries below the WHO workforce threshold, weighted by need.**
+Cambodia, Indonesia, Laos, Myanmar, Thailand, and Vietnam fall below the WHO's minimum of 
+4.45 health workers per 1,000 population — a combined population of roughly 494 million 
+people. The spend-vs-outcome relationship shows diminishing returns at the high end, so 
+directing funding toward this group targets it where the workforce gap is most acute and 
+best-evidenced, rather than spreading it evenly across all ten countries.
+
+**2. Scale Thailand's community health worker model regionally.**
+Thailand achieves substantially better child survival than the Philippines with roughly a 
+third of the workforce density, backed by a network of community health volunteers 
+connected to the formal referral system. Training and digitally connecting similar 
+volunteer networks in under-threshold countries is achievable on a far shorter timeline 
+than training enough new doctors and nurses to close the same gap.
+
+**3. Mandate a common ASEAN health data reporting standard.**
+Eight of ten countries have at least one documented TB reporting anomaly, and only two 
+still report data past 2012. A region cannot verify its own disease containment success 
+under these conditions. A shared reporting format and minimum-frequency requirement, 
+starting with TB and malaria and coordinated through the ASEAN Public Health Task Force, 
+would directly address this — and supports SDG 17 (cross-border data partnerships) 
+alongside SDG 3.
 
 
 ## Files
