@@ -2,8 +2,8 @@
 
 Interactive dashboard for the 10Alytics Global Hackathon 2026 — Pod 4, HealthTech Analytics Programme.
 
-**[View the live interactive dashboard →](https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO-NAME/)**
-*(Replace with your actual GitHub Pages link once enabled — see below)*
+**[View the live interactive dashboard →]([https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO-NAME/](https://samuelejedegba.github.io/asean-health-equity-dashboard/)**
+
 
 ## What this is
 
