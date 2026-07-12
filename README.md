@@ -116,4 +116,4 @@ alongside SDG 3.
 - Written insights report with methodology and policy recommendations
 - Presentation deck
 
-Built with data analysis and web development assistance from Claude (Anthropic).
+Built with data analysis and web development assistance.
