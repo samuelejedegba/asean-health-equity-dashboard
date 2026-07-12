@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASEAN Health Equity & SDG 3 Progress</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <h1>ASEAN Health Equity <span class="amp">&amp;</span> SDG 3 Progress</h1>
+    <nav class="tabs" id="tabs">
+      <button class="tab active" data-page="funding">Funding Efficiency</button>
+      <button class="tab" data-page="survival">Childhood Survival</button>
+      <button class="tab" data-page="containment">Disease Containment</button>
+    </nav>
+  </div>
+</div>
+
+<main class="layout">
+
+  <!-- ============ PAGE 1: FUNDING EFFICIENCY ============ -->
+  <section class="page active" id="page-funding">
+    <div class="cards">
+      <div class="card">
+        <div class="card-value teal" id="c-lifeexp">–</div>
+        <div class="card-label">Avg Life Expectancy</div>
+      </div>
+      <div class="card">
+        <div class="card-value gold" id="c-below">–</div>
+        <div class="card-label">Countries Below WHO Threshold</div>
+      </div>
+      <div class="card">
+        <div class="card-value magenta" id="c-pop">–</div>
+        <div class="card-label">Pop Below WHO Threshold (M)</div>
+      </div>
+      <div class="card">
+        <div class="card-value blue" id="c-spend">–</div>
+        <div class="card-label">Health Spend per Capita ($)</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="panel">
+        <h3>Spend per Capita and Life Expectancy</h3>
+        <div class="chart-wrap"><canvas id="chartSpend"></canvas></div>
+      </div>
+      <div class="panel">
+        <h3>Latest Workforce Density and Under-5 Mortality</h3>
+        <div class="chart-wrap"><canvas id="chartWorkforce"></canvas></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Life Expectancy vs Spend-Predicted Level, by Country</h3>
+      <div class="subtitle">Positive = outperforming spend level; negative = underperforming</div>
+      <div class="chart-wrap tall"><canvas id="chartResidual"></canvas></div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 2: CHILDHOOD SURVIVAL ============ -->
+  <section class="page" id="page-survival">
+    <div class="cards">
+      <div class="card">
+        <div class="card-value teal" id="c-infantmort">–</div>
+        <div class="card-label">Infant Mortality</div>
+      </div>
+      <div class="card">
+        <div class="card-value gold" id="c-dpt">–</div>
+        <div class="card-label">DPT Coverage</div>
+      </div>
+      <div class="card">
+        <div class="card-value magenta" id="c-dptbelow">–</div>
+        <div class="card-label">Countries Below 90% DPT Target</div>
+      </div>
+      <div class="card">
+        <div class="card-value blue" id="c-corr">–</div>
+        <div class="card-label">DPT-Infant Mortality Correlation</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>DPT Coverage (%) and Infant Mortality (Per 1,000)</h3>
+      <div class="chart-wrap tall"><canvas id="chartDPT"></canvas></div>
+    </div>
+
+    <div class="panel">
+      <h3>Undernourished (%) and Under-5 Mortality (Per 1,000)</h3>
+      <div class="chart-wrap tall"><canvas id="chartNutrition"></canvas></div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 3: DISEASE CONTAINMENT ============ -->
+  <section class="page" id="page-containment">
+    <div class="cards">
+      <div class="card">
+        <div class="card-value warn" id="c-anomalies">–</div>
+        <div class="card-label">Documented Anomalies</div>
+      </div>
+      <div class="card">
+        <div class="card-value gold" id="c-tbafter">–</div>
+        <div class="card-label">Countries Reporting TB After 2012</div>
+      </div>
+      <div class="card">
+        <div class="card-value grey" id="c-tbavg">–</div>
+        <div class="card-label">Regional TB Prevalence</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="panel">
+        <h3>TB Prevalence by Year and Country</h3>
+        <div class="chart-wrap tall"><canvas id="chartTB"></canvas></div>
+      </div>
+      <div class="panel">
+        <h3>Data Quality Anomaly Log</h3>
+        <div class="table-wrap" id="anomalyTable"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>10Alytics Global Hackathon 2026 &nbsp;|&nbsp; Pod 4, HealthTech Analytics Programme &nbsp;|&nbsp; Built with Claude</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<script src="dashboard_data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
